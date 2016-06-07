@@ -8,4 +8,4 @@ source_url 'https://github.com/anuriq/chef-winlogbeat' if respond_to?(:source_ur
 issues_url 'https://github.com/anuriq/chef-winlogbeat/issues' if respond_to?(:issues_url)
 version '0.1.0'
 
-supports windows
+supports 'windows'
