@@ -1,0 +1,23 @@
+---
+driver:
+  name: vagrant
+
+provisioner:
+  name: chef_zero
+  cookbooks_path: test/shared/cookbooks
+  nodes_path: test/shared/nodes
+
+platforms:
+  - name: win-2012r2
+    driver:
+      provider: virtualbox
+      box: mwrock/Windows2012R2
+      communicator: winrm
+      shell_type: powershell
+    provisioner:
+      require_chef_omnibus: true
+
+suites:
+  - name: default
+    run_list:
+    - recipe[test]

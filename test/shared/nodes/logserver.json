@@ -1,0 +1,15 @@
+{
+  "name": "logserver",
+  "chef_type": "node",
+  "json_class": "Chef::Node",
+  "run_list": ["role[logserver]"],
+  "normal": {
+    "ipaddress": "10.0.0.1",
+    "fqdn": "logstash.local",
+    "logstash": {
+      "tcp": {
+        "port": 1234
+      }
+    }
+  }
+}
