@@ -2,7 +2,7 @@
 # Cookbook Name:: winlogbeat
 # Recipe:: install
 #
-# Copyright 2016, Azat Khadiev
+# Copyright:: 2016-2017, Azat Khadiev
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -18,7 +18,11 @@
 #
 
 package_url = if node['winlogbeat']['package_url'] == 'auto'
-                "https://download.elastic.co/beats/winlogbeat/winlogbeat-#{node['winlogbeat']['version']}-windows.zip"
+                if node['winlogbeat']['version'].to_i > 1
+                  "https://artifacts.elastic.co/downloads/beats/winlogbeat/winlogbeat-#{node['winlogbeat']['version']}-windows-x86_64.zip"
+                else
+                  "https://download.elastic.co/beats/winlogbeat/winlogbeat-#{node['winlogbeat']['version']}-windows.zip"
+                end
               else
                 node['winlogbeat']['package_url']
               end
@@ -37,6 +41,12 @@ directory destination do
   action :create
 end
 
+node.default['winlogbeat']['service_dir'] = if node['winlogbeat']['version'].to_i > 1
+                                              "#{destination}\\winlogbeat-#{node['winlogbeat']['version']}-windows-x86_64"
+                                            else
+                                              "#{destination}\\winlogbeat-#{node['winlogbeat']['version']}-windows"
+                                            end
+
 powershell_script 'Unzip Winlogbeat' do
   code <<-EOH
   $shell = new-object -com shell.application
@@ -45,5 +55,5 @@ powershell_script 'Unzip Winlogbeat' do
     $shell.Namespace('#{destination}').copyhere($item)
   }
   EOH
-  not_if { ::File.exist?("#{destination}\\winlogbeat-#{node['winlogbeat']['version']}-windows\\winlogbeat.exe") }
+  not_if { ::File.exist?("#{node['winlogbeat']['service_dir']}\\winlogbeat.exe") }
 end

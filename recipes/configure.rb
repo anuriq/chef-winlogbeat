@@ -2,7 +2,7 @@
 # Cookbook Name:: winlogbeat
 # Recipe:: configure
 #
-# Copyright 2016, Azat Khadiev
+# Copyright:: 2016-2017, Azat Khadiev
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -27,7 +27,7 @@ end
 powershell_script 'install winlogbeat as a service' do
   code <<-EOH
   $conf_file = (Resolve-Path '#{conf_file}').Path
-  $exe_file = (Resolve-Path '#{node['winlogbeat']['install_dir']}\\winlogbeat-#{node['winlogbeat']['version']}-windows\\winlogbeat.exe').Path
+  $exe_file = (Resolve-Path '#{node['winlogbeat']['service_dir']}\\winlogbeat.exe').Path
   $bin_path_name = "`"$exe_file`" -c `"$conf_file`""
 
   if (Get-Service winlogbeat -ErrorAction SilentlyContinue) {

@@ -2,7 +2,7 @@
 # Cookbook Name:: winlogbeat
 # Attributes:: default
 #
-# Copyright 2016, Azat Khadiev
+# Copyright:: 2016-2017, Azat Khadiev
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -17,7 +17,7 @@
 # limitations under the License.
 #
 
-default['winlogbeat']['version'] = '1.2.2'
+default['winlogbeat']['version'] = '5.4.2'
 default['winlogbeat']['package_url'] = 'auto'
 default['winlogbeat']['notify_restart'] = true
 default['winlogbeat']['install_only'] = false
