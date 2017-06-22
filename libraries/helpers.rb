@@ -18,7 +18,6 @@
 #
 
 module Winlogbeat
-  # Helper functions for the cookbook
   module Helpers
     def self.config_to_yaml(default_conf, override_conf)
       # Convert to YAML. JSON used because input is actually an ImmutableMash of Chef.

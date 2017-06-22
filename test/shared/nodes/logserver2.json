@@ -4,7 +4,7 @@
   "json_class": "Chef::Node",
   "run_list": ["role[logserver]"],
   "normal": {
-    "ipaddress": "10.0.0.2",
+    "ipaddress": "127.0.0.12",
     "fqdn": "logstash2.local",
     "logstash": {
       "tcp": {
