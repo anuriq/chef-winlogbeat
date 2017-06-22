@@ -34,7 +34,7 @@ chef exec rake integration:vagrant
 ```
 
 ### Examples
-For examples see `test/shared/cookbooks/test` cookbook.
+For examples see `test/fixtures/cookbooks/test` cookbook.
 
 ### Authors
 * Author:: Azat Khadiev (anuriq@gmail.com)
