@@ -17,7 +17,7 @@
 # limitations under the License.
 #
 
-default['winlogbeat']['version'] = '5.4.2'
+default['winlogbeat']['version'] = '5.6.8'
 default['winlogbeat']['package_url'] = 'auto'
 default['winlogbeat']['notify_restart'] = true
 default['winlogbeat']['install_only'] = false
