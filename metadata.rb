@@ -6,7 +6,7 @@ description 'Installs/Configures Elastic Winlogbeat'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
 source_url 'https://github.com/anuriq/chef-winlogbeat' if respond_to?(:source_url)
 issues_url 'https://github.com/anuriq/chef-winlogbeat/issues' if respond_to?(:issues_url)
-version '1.0.2'
+version '1.0.3'
 
 supports 'windows'
 
