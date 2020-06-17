@@ -49,11 +49,7 @@ node.default['winlogbeat']['service_dir'] = if node['winlogbeat']['version'].to_
 
 powershell_script 'Unzip Winlogbeat' do
   code <<-EOH
-  $shell = new-object -com shell.application
-  $zip = $shell.NameSpace('#{package_file}')
-  foreach($item in $zip.items()) {
-    $shell.Namespace('#{destination}').copyhere($item)
-  }
+    Expand-Archive '#{package_file}' '#{destination}'
   EOH
   not_if { ::File.exist?("#{node['winlogbeat']['service_dir']}\\winlogbeat.exe") }
 end
